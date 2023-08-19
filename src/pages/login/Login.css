@@ -1,0 +1,18 @@
+.loginClass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.width-input{
+    width: 300px;
+}
+
+.loginSignupClass{
+    background-color: aliceblue;
+}
+
+.register-link{
+    text-decoration: none;
+}
