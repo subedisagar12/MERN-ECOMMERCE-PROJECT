@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import ProductDetail from "./pages/ProductDetail";
 import Homepage from "./pages/Homepage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/product/detail" element={<ProductDetail />} />
 
         <Route path="/cart" element={<CartPage />} />
+
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </>
   );
