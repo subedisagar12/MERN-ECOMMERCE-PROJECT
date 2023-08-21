@@ -1,5 +1,6 @@
 import React from "react";
 import Counter from "../components/Counter";
+import { Link } from "react-router-dom";
 
 function CartPage() {
   return (
@@ -75,6 +76,15 @@ function CartPage() {
             </tr>
           </tfoot>
         </table>
+        <div className="d-flex justify-content-end mt-3">
+          <Link
+            to="/checkout"
+            className="btn btn-dark"
+            style={{ marginRight: "200px" }}
+          >
+            Checkout
+          </Link>
+        </div>
       </div>
     </>
   );

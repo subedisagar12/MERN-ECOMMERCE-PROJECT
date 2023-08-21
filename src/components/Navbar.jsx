@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <>
@@ -55,10 +56,40 @@ function Navbar() {
                   </li>
                 </ul>
               </li>
+            </ul>
 
+            <form className="d-flex flex-grow-1 align-items-center">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                style={{ color: "#24183a", borderRadius: "30px" }}
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/cart">
                   <i className="fa-solid fa-cart-shopping"></i> My Cart
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/user">
+                  <i
+                    className="fa-solid fa-user"
+                    style={{
+                      color: "#8c8c89",
+                      backgroundColor: "#d9d7d2",
+                      borderRadius: "20px",
+                      border: "1px #d9d7d2",
+                      padding: "5px",
+                    }}
+                  />
                 </Link>
               </li>
             </ul>
