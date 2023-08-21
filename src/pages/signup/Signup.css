@@ -1,0 +1,16 @@
+.signupClass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.signup-center{
+    display: flex;
+    justify-content: center;
+}
+
+.login-center{
+    display: flex;
+    justify-content: center;
+}
