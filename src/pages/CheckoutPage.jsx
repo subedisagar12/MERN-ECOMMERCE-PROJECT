@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CheckoutPage() {
   const formStyle = {
@@ -76,9 +77,9 @@ function CheckoutPage() {
         ></textarea>
       </div>
       <div className="col-12 mb-3">
-        <button type="submit" className="btn btn-warning">
+        <Link to="/order" type="submit" className="btn btn-outline-success">
           Complete Order
-        </button>
+        </Link>
       </div>
     </form>
   );
