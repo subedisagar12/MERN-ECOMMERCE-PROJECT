@@ -1,25 +1,45 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Banner() {
+  const [allBanner, setBanner] = useState([]);
+
+  const fetchBanner = () => {
+    axios({
+      url: "http://localhost:8888/banner/all",
+      method: "GET"
+    })
+      .then((res) => {
+        setBanner(res.data.data);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
+
   return (
     <>
       <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/004/299/835/original/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg"
-              className="d-block w-100"
-              alt="banner1"
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://static.vecteezy.com/system/resources/thumbnails/004/707/493/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg"
-              className="d-block w-100"
-              alt="banner2"
-            />
-          </div>
-        </div>
+          {allBanner
+          .filter(banner => banner.is_featured)
+          .map((banner, index) => (
+            <div
+              key={banner._id}
+              className={`carousel-item ${index === 0 ? 'active' : ''}`}
+            >
+              <img 
+                src={banner.image}
+                className="d-block w-100"
+                alt={banner.title}
+              />
+            </div>
+          ))}
+        </div> 
         <button
           className="carousel-control-prev"
           type="button"
