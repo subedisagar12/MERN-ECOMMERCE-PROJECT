@@ -79,7 +79,7 @@ function CartPage() {
         <div className="d-flex justify-content-end mt-3">
           <Link
             to="/checkout"
-            className="btn btn-dark"
+            className="btn btn-success"
             style={{ marginRight: "200px" }}
           >
             Checkout
