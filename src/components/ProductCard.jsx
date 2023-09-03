@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
+import { Products } from "../productcard";
+import Product from "./Product";
 
 function ProductCard() {
   return (
     <>
       <div className="card">
-        <img
+        <div className="card-body">
+          <div className="Products">{Products.map((product)=><Product data={product}></Product>)}
+          </div>
+        </div>
+        {/* <img
           src="https://www.borofone.com/wp-content/uploads/2022/04/borofone-bo12-power-bt-headset-headphones.jpg"
           className="card-img-top"
           alt="headphone"
@@ -20,8 +26,8 @@ function ProductCard() {
           </h5>
           <p className="card-text">Rs. 3500</p>
 
-          <AddToCartButton />
-        </div>
+          
+        </div> */}
       </div>
     </>
   );
