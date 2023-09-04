@@ -1,4 +1,5 @@
-import React from "react";
+import PropTypes from "prop-types";
+
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
 import { Products } from "../productcard";
@@ -32,5 +33,8 @@ function ProductCard() {
     </>
   );
 }
+  ProductCard.propTypes = {
+    product: PropTypes.object.isRequired,
+  };
 
 export default ProductCard;

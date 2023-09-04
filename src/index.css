@@ -1,3 +1,9 @@
+
+
+
+@import "./pages/login/Login.css";
+@import "./pages/signup/Signup.css";
+
 .product-title {
   text-decoration: none;
   color: black;
