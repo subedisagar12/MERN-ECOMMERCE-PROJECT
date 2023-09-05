@@ -2,35 +2,25 @@ import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
-import { Products } from "../productcard";
-import Product from "./Product";
 
-function ProductCard() {
+function ProductCard({product}) {
   return (
-    <>
-      <div className="card">
-        <div className="card-body">
-          <div className="Products">{Products.map((product)=><Product data={product}></Product>)}
+    <div className="card">
+            <img
+              src={product.image}
+              className="card-img-top"
+              alt={product.name}
+            />
+            <div className="card-body">
+              <h5 className="card-title">
+                <Link to="/product/detail" className="product-title">
+                  {product.name}
+                </Link>
+              </h5>
+              <p className="card-text">Rs. {product.price}</p>
+              <AddToCartButton />
+            </div>
           </div>
-        </div>
-        {/* <img
-          src="https://www.borofone.com/wp-content/uploads/2022/04/borofone-bo12-power-bt-headset-headphones.jpg"
-          className="card-img-top"
-          alt="headphone"
-        />
-        <div className="card-body">
-          <h5 className="card-title">
-            <Link to="/product/detail" className="product-title">
-              {" "}
-              Sony Headphone
-            </Link>
-          </h5>
-          <p className="card-text">Rs. 3500</p>
-
-          
-        </div> */}
-      </div>
-    </>
   );
 }
   ProductCard.propTypes = {

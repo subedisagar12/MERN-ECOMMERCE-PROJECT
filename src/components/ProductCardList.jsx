@@ -8,7 +8,7 @@ function ProductCardList() {
 
   const fetchProducts = () => {
     axios
-      .get("http://localhost:8888/product/all")
+      .get("http://localhost:8888/product/get")
       .then((res) => {
         console.log(res.data.data);
         setAllProducts(res.data.data);
