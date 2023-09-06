@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductContext } from "../context/productContext";
 
-function AddToCartButton() {
+
+function AddToCartButton({product}) {
+  const [productID, setProductID] = useState(" ")
   const {addToCart} = useContext(ProductContext)
+  console.log({product})
   return (
     <>
-      <a href="#" className="btn btn-primary btn-sm" onClick={()=>addToCart()}>
+      <button className="btn btn-primary btn-sm" onClick={()=>addToCart(product._id)}>
         <i className="fa-solid fa-cart-shopping"></i> Add to cart
-      </a>
+      </button>
     </>
   );
 }

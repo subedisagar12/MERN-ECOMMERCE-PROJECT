@@ -1,13 +1,13 @@
 import React, {createContext,useState} from 'react'
-import { Products } from "../productcard";
+// import { Products } from "../productcard";
 export const ProductContext = createContext(null)
 
 const getDefaultCart = () =>{
-    let cart = {}
-    for(let i = 1; i<Products.length + 1; i++){
-        cart[i] = 0
-    }
-    return cart
+    // let cart = {}
+    // for(let i = 1; i<Products.length + 1; i++){
+    //     cart[i] = 0
+    // }
+    // return cart
 }
 
 function ProductContextProvider(props) {
@@ -25,7 +25,9 @@ function ProductContextProvider(props) {
       };
 
     const addToCart = (itemId) =>{
-        setCartItems((prev) => ({ ...prev, [itemId]:prev[itemId]+1}))
+      const itemID = itemId
+      console.log(itemID)
+        // setCartItems((prev) => ({ ...prev, [itemId]:prev[itemId]+1}))
     }
     const removeFromCart = (itemId) =>{
         setCartItems((prev) => ({ ...prev, [itemId]:prev[itemId]-1}))

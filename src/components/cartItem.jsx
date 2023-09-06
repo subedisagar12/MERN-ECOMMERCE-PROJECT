@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import { ProductContext } from "../context/productContext";
 
 function CartItem(props) {
-    const {id,productName, price, productImage} = props.data
+    const {id,name, price, productImage} = props.data
     const {cartItems, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount} = useContext(ProductContext)
   return (
         <>

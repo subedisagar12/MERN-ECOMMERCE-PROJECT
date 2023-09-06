@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Counter from "../components/Counter";
 import { Link } from "react-router-dom";
-import { Products } from "../productcard";
+// import { Products } from "../productcard";
 import { ProductContext } from "../context/productContext";
 import CartItem from "../components/cartItem";
 
