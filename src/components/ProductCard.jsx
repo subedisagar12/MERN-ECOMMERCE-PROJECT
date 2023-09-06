@@ -22,7 +22,7 @@ function ProductCard({product}) {
                 </Link>
               </h5>
               <p className="card-text">Rs. {product.price}</p>
-              <AddToCartButton data = {product}/>
+              <AddToCartButton product = {product}/>
               {/* <button className="btn btn-primary btn-sm" onClick={()=>addToCart(product._id, product.image, product.name, product.price)}>
         <i className="fa-solid fa-cart-shopping"></i> Add to cart
       </button> */}

@@ -6,7 +6,7 @@ import { ProductContext } from "../context/productContext";
 function Product(props) {
     const {id,productName, price, productImage} = props.data
     const {addToCart, cartItems} = useContext(ProductContext)
-
+    
     const cartItemAmount = cartItems[id]
   return (
     <>

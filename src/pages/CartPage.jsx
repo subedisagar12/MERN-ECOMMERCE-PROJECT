@@ -7,14 +7,18 @@ import CartItem from "../components/cartItem";
 
 function CartPage() {
     const {cartItems} = useContext(ProductContext)
+    console.log(cartItems)
+    let cartkeys = Object.keys(cartItems)
   return (
     <>
     <tr>
-     {Products.map((product)=>{
-            if(cartItems[product.id] != 0){
-              return <CartItem data={product}></CartItem>
-            }
-          })}
+     {
+     <CartItem data = {cartItems}></CartItem>
+    //  cartkeys.map((cartItems)=>{
+    //           return <CartItem data={cartItems}></CartItem>
+    //       })
+          
+    }
           </tr>
     </>
   );
