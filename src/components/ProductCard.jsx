@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
 
-
 function ProductCard({product}) {
   return (
     <div className="card">

@@ -7,7 +7,7 @@ function Banner() {
   const fetchBanner = () => {
     axios({
       url: "http://localhost:8888/banner/all",
-      method: "GET"
+      method: "GET",
     })
       .then((res) => {
         setBanner(res.data.data);
@@ -26,20 +26,20 @@ function Banner() {
       <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
           {allBanner
-          .filter(banner => banner.is_featured)
-          .map((banner, index) => (
-            <div
-              key={banner._id}
-              className={`carousel-item ${index === 0 ? 'active' : ''}`}
-            >
-              <img 
-                src={banner.image}
-                className="d-block w-100"
-                alt={banner.title}
-              />
-            </div>
-          ))}
-        </div> 
+            .filter((banner) => banner.is_featured)
+            .map((banner, index) => (
+              <div
+                key={banner._id}
+                className={`carousel-item ${index === 0 ? "active" : ""}`}
+              >
+                <img
+                  src={banner.image}
+                  className="d-block w-100"
+                  alt={banner.title}
+                />
+              </div>
+            ))}
+        </div>
         <button
           className="carousel-control-prev"
           type="button"

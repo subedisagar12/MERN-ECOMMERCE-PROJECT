@@ -1,7 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [allCategory, setAllCategory] = useState([]);
+
+  const fetchCategory = () => {
+    axios({
+      url: "http://localhost:8888/category/all",
+      method: "GET",
+    })
+      .then((res) => {
+        setAllCategory(res.data.data);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  };
+
+  //removed 
+
+  useEffect(() => {
+    fetchCategory();
+  }, []);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -39,21 +60,13 @@ function Navbar() {
                   Categories
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Clothing
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Electronics
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Kitchen Appliances
-                    </a>
-                  </li>
+                  {allCategory?.map((item) => (
+                    <li key={item?._id}>
+                      <a className="dropdown-item" href="#">
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </li>
             </ul>
@@ -79,9 +92,23 @@ function Navbar() {
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/user">
+                <Link className="nav-link" aria-current="page" to="/login">
                   <i
                     className="fa-solid fa-user"
+                    style={{
+                      color: "#8c8c89",
+                      backgroundColor: "#d9d7d2",
+                      borderRadius: "20px",
+                      border: "1px #d9d7d2",
+                      padding: "5px",
+                    }}
+                  />
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/signup">
+                  <i
+                    className="fa-solid fa-user-plus"
                     style={{
                       color: "#8c8c89",
                       backgroundColor: "#d9d7d2",
