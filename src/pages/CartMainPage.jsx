@@ -18,7 +18,8 @@ function CartMainPage() {
               <th>Image</th>
               <th>Product Name</th>
               <th>Quantity</th>
-              <th>Price</th>
+              <th>Unit Price</th>
+              <th>Sub Total</th>
             </tr>
           </thead>
           <tbody>

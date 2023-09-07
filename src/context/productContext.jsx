@@ -12,39 +12,61 @@ function ProductContextProvider(props) {
     const [cartItems, setCartItems] = useState(getDefaultCart())
 
     const getTotalCartAmount = () => {
-        let totalAmount = 0;
-        for (const item in cartItems) {
-          if (cartItems[item] > 0) {
-            let itemInfo = Products.find((product) => product.id === Number(item));
-            totalAmount += cartItems[item] * itemInfo.price;
-          }
-        }
+        let totalAmount = cartItems.reduce((acc,item)=>{
+          return acc + item.quantity*item.price
+        },0);
+        
         return totalAmount;
       };
 
     const addToCart = ({product}) =>{
-      console.log(product._id)
-      let cartProduct = {
-        id: product._id,
-        name: product.name,
-        image: product.image,
-        price:product.price
+      let cartProduct = cartItems.find(item=>item._id === product._id)
+      if(cartProduct){
+        setCartItems(cartItems.map(item=>{
+          if(item._id === cartProduct._id){
+            return {...item, quantity:cartProduct.quantity+1}
+          }else{
+            return item
+          }
+        }))
+      }else{
+      //  let newcartProduct = {
+      //     _id: product._id,
+      //     name: product.name,
+      //     image: product.image,
+      //     price: product.price,
+      //     quantity: 1,
+      //   }
+        setCartItems((prev)=> ([...prev,{...product,quantity:1} ]))
       }
-      console.log(cartProduct)
-      setCartItems((prev)=> ({...prev, [product._id]: cartProduct}))
-      console.log(cartItems)
-
+      // console.log(product._id)
       // console.log(cart)
       // setCartItems((prev) => ({ ...prev, [itemId]:prev[itemId]+1}))
     }
-    const removeFromCart = (id,image,name,price) =>{
-        setCartItems((prev) => ({ ...prev, [itemId]:prev[itemId]-1}))
+    console.log(cartItems)
+    const removeFromCart = (_id) =>{
+      setCartItems(cartItems.map(item=>{
+        if(item._id === _id){
+          return {...item, quantity:item.quantity-1}
+        }else{
+          return item
+        }
+      }))
+    }
+    const increaseToCart = (_id) =>{
+      setCartItems(cartItems.map(item=>{
+        if(item._id === _id){
+          return {...item, quantity:item.quantity+1}
+        }else{
+          return item
+        }
+      }))
     }
     const updateCartItemCount = (newAmount, itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
       }
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount}
-    console.log(cartItems)
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount, increaseToCart}
+    // console.log(cartItems)
   return (
     <div>
         <ProductContext.Provider value = {contextValue}> {props.children} </ProductContext.Provider>

@@ -11,15 +11,18 @@ function CartPage() {
     let cartkeys = Object.keys(cartItems)
   return (
     <>
-    <tr>
-     {
-     <CartItem data = {cartItems}></CartItem>
-    //  cartkeys.map((cartItems)=>{
-    //           return <CartItem data={cartItems}></CartItem>
-    //       })
-          
-    }
-          </tr>
+    {cartItems.map(item=>(
+      <tr>
+      {
+      <CartItem data = {item}></CartItem>
+     //  cartkeys.map((cartItems)=>{
+     //           return <CartItem data={cartItems}></CartItem>
+     //       })
+           
+     }
+           </tr>
+    ))}
+    
     </>
   );
 }
