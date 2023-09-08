@@ -23,7 +23,7 @@ function Banner() {
 
   return (
     <>
-      <div id="carouselExample" className="carousel slide">
+      <div id="carouselExample" className="carousel slide" data-bs-ride="carousel" data-interval="2000">
         <div className="carousel-inner">
           {allBanner
             .filter((banner) => banner.is_featured)
