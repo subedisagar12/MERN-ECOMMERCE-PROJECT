@@ -1,15 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { ProductContext } from "../context/productContext";
 
-function AddToCartButton() {
+
+function AddToCartButton({product}) {
+  // const {id, name, image, price} = useState()
+  // const [productID, setProductID] = useState(" ")
   const {addToCart} = useContext(ProductContext)
+  console.log(product._id)
   return (
     <>
-      <a href="#" className="btn btn-primary btn-sm" onClick={()=>addToCart()}>
+      <button className="btn btn-primary btn-sm" onClick={()=>addToCart(product = {product})}>
         <i className="fa-solid fa-cart-shopping"></i> Add to cart
-      </a>
+      </button>
     </>
   );
 }
+AddToCartButton.propTypes = {
+  product: PropTypes.object.isRequired,
+};
+
 
 export default AddToCartButton;

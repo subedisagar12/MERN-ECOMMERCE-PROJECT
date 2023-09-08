@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
+import React, { useContext, useState } from "react";
+
 
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
+import { ProductContext } from "../context/productContext";
 
 function ProductCard({product}) {
+  const {addToCart, cartItems} = useContext(ProductContext)
   return (
     <div className="card">
             <img
@@ -18,7 +22,10 @@ function ProductCard({product}) {
                 </Link>
               </h5>
               <p className="card-text">Rs. {product.price}</p>
-              <AddToCartButton />
+              <AddToCartButton product = {product}/>
+              {/* <button className="btn btn-primary btn-sm" onClick={()=>addToCart(product._id, product.image, product.name, product.price)}>
+        <i className="fa-solid fa-cart-shopping"></i> Add to cart
+      </button> */}
             </div>
           </div>
   );
