@@ -26,7 +26,7 @@ function ProductCardList() {
       <div className="row">
           {
             allProducts.map((product,index)=>(
-              <div className="col-3" key={index}>
+              <div className="col-3" key={index} style={{ padding:"10px"}}>
               <ProductCard  product={product} />
               </div>
             ))
