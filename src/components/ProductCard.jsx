@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
-
 import { Link } from "react-router-dom";
-import AddToCartButton from "./AddToCartButton";
 
 function ProductCard({product}) {
   return (
@@ -13,12 +11,11 @@ function ProductCard({product}) {
             />
             <div className="card-body">
               <h5 className="card-title">
-                <Link to="/product/detail" className="product-title">
+                <Link to={`/product/detail?name=${product.name}&price=${product.price}&image=${product.image}`}>
                   {product.name}
                 </Link>
               </h5>
               <p className="card-text">Rs. {product.price}</p>
-              <AddToCartButton />
             </div>
           </div>
   );

@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import SearchResultPage from "./SearchResultPage";
+import Cart from "./Cart/Cart";
+
 function Navbar() {
   const [allCategory, setAllCategory] = useState([]);
+  const [searchProduct, setSearchProduct] = useState(""); 
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
 
   const fetchCategory = () => {
     axios({
@@ -12,17 +18,36 @@ function Navbar() {
     })
       .then((res) => {
         setAllCategory(res.data.data);
+        setShowSearchResults(true);
       })
       .catch((e) => {
         console.log(e.message);
       });
   };
 
-  //removed 
+  const searchFetch = () => {
+    axios({
+      url: "http://localhost:8888/products/all",
+      method: "GET",
+    })
+      .then((response) => {
+        console.log("Search results:", response.data);
+        setSearchResults(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching search results:", error);
+      });
+  };
 
   useEffect(() => {
     fetchCategory();
   }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    searchFetch();
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -70,25 +95,26 @@ function Navbar() {
                 </ul>
               </li>
             </ul>
-
-            <form className="d-flex flex-grow-1 align-items-center">
+            <form
+              className="d-flex flex-grow-1 align-items-center"
+              onSubmit={handleFormSubmit}
+            >
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
                 style={{ color: "#24183a", borderRadius: "30px" }}
+                value={searchProduct}
+                onChange={(e) => setSearchProduct(e.target.value)}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>
-
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/cart">
-                  <i className="fa-solid fa-cart-shopping"></i> My Cart
-                </Link>
+                <Cart></Cart>
               </li>
 
               <li className="nav-item">
@@ -123,6 +149,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
+      {/* {showSearchResults && <SearchResultPage data={searchResults} />} */}
     </>
   );
 }

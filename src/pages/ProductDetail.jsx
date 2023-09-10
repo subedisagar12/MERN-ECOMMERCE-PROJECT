@@ -1,8 +1,21 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
 import Counter from "../components/Counter";
-import AddToCartButton from "../components/AddToCartButton";
+import AddToCartButton from "../components/AddToCart/AddToCartButton";
 
 function ProductDetail() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  // Retrieve values from query parameters
+  const name = searchParams.get("name");
+  const price = searchParams.get("price");
+  const image = searchParams.get("image");
+
+  if (!name || !price || !image) {
+    // Handle the case where query parameters are missing or incomplete
+    return <div>Product details not found.</div>;
+  }
+
   return (
     <>
       <div className="container mt-5">
@@ -10,16 +23,16 @@ function ProductDetail() {
           {/* Image Column */}
           <div className="col-5">
             <img
-              src="https://www.borofone.com/wp-content/uploads/2022/04/borofone-bo12-power-bt-headset-headphones.jpg"
-              alt="headphone"
+              src={image}
+              alt={name}
               style={{ width: "100%" }}
             />
           </div>
 
           {/* Content column */}
           <div className="col">
-            <h1>Sony Headphones</h1>
-            <h5>Rs.3500</h5>
+            <h1>{name}</h1>
+            <h5>RS {price}</h5>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptates, distinctio sit? Temporibus dolor aspernatur asperiores
