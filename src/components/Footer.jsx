@@ -1,9 +1,7 @@
-import React from 'react'
-
 function Footer() {
   return (
     <>
-       <footer id="footer" className="footer-1">
+       <footer id="footer" className="footer-1" style={{marginTop:'20px'}}>
         <div className="main-footer widgets-dark typo-light">
           <div className="container">
             <div className="row">

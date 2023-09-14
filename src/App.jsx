@@ -1,7 +1,7 @@
 import "./App.css";
 
 // Package imports
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 
 // Component import
 import Navbar from "./components/Navbar";
@@ -26,7 +26,7 @@ function App() {
         <Route path="/order" element={<OrderDetails />} />
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
-        <Route path="/checkout" element = {<CheckOut></CheckOut>}></Route>
+        <Route path="/checkout/detail" element = {<CheckOut></CheckOut>}></Route>
        </Routes>
       <Footer/>
 

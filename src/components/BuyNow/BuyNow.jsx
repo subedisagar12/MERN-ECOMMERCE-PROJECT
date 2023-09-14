@@ -1,7 +1,7 @@
 function BuyNow() {
     return (
       <>
-          <button className="buyNowButton">Buy Now</button>
+          <button className="btn btn-primary btn-sm">Buy Now</button>
       </>
     )
   }

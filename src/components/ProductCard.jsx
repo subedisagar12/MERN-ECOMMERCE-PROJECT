@@ -8,6 +8,8 @@ function ProductCard({product}) {
               src={product.image}
               className="card-img-top"
               alt={product.name}
+              height='190px'
+              width='190px'
             />
             <div className="card-body">
               <h5 className="card-title">
