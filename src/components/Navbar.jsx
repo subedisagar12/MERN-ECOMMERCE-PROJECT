@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Searchbar from "./Search/Searchbar";
 function Navbar() {
   return (
     <>
@@ -55,6 +56,10 @@ function Navbar() {
                   </li>
                 </ul>
               </li>
+
+                <li>
+                  <Searchbar />
+                </li>
 
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/cart">
